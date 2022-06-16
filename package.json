@@ -1,11 +1,11 @@
 {
-  "name": "commentcov-plugin-typescript",
+  "name": "@commentcov/commentcov-plugin-typescript",
   "version": "0.0.1",
   "engines": {
     "node": ">=16.0.0"
   },
   "bin": {
-    "commentcov-plugin-typescript": "./bin/index.ts"
+    "commentcov-plugin-typescript": "./bin/index.js"
   },
   "repository": {
     "type": "git",

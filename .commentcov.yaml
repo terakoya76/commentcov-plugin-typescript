@@ -1,7 +1,7 @@
 plugins:
   - extension: .ts
-    install_command: ls
-    execute_command: npx ts-node src/index.ts
+    install_command: npm i --location=global @commentcov/commentcov-plugin-typescript
+    execute_command: npx commentcov-plugin-typescript
 target_path: .
 exclude_paths:
   - ./build/**/**
