@@ -1,0 +1,11 @@
+plugins:
+  - extension: .ts
+    install_command: ls
+    execute_command: npx ts-node src/index.ts
+target_path: .
+exclude_paths:
+  - ./build/**/**
+  - ./docs/**/**
+  - ./node_modules/**/**
+  - ./src/generated/**/**
+mode: file_scope

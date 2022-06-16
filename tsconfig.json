@@ -1,0 +1,35 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "src/module.ts",
+    ],
+    "out": "docs",
+    "readme": "./README.md"
+  },
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "outDir": "./build",
+    "rootDir": ".",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "include": [
+    "bin/**/*.ts",
+    "src/**/*.ts",
+  ],
+  "exclude": [
+    ".git",
+    "node_modules"
+  ]
+}

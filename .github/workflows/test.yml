@@ -1,0 +1,51 @@
+name: test
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        node: [16.x, 18.x]
+        os: [ubuntu-20.04, ubuntu-22.04]
+
+    name: all
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+
+    - uses: actions/cache@v3
+      id: cache-node-modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ matrix.node }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ matrix.node }}-node-
+
+    - name: download dependencies
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: npm ci
+
+    - name: lint
+      run: npm run lint
+
+    - name: test
+      run: npm t
+
+    - name: coverage
+      run: npm run coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        path-to-lcov: coverage/lcov.info
+      if: "matrix.os == 'ubuntu-22.04' && matrix.node == '18.x'"

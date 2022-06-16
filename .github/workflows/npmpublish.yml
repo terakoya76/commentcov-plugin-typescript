@@ -1,0 +1,38 @@
+name: release
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: haya14busa/action-bumpr@v1
+        id: bumpr
+        if: "!startsWith(github.ref, 'refs/tags/')"
+
+      # Get tag name.
+      - uses: haya14busa/action-cond@v1
+        id: tag
+        with:
+          cond: "${{ startsWith(github.ref, 'refs/tags/') }}"
+          if_true: ${{ github.ref }}
+          if_false: ${{ steps.bumpr.outputs.next_version }}
+
+      - uses: actions/setup-node@v3
+        if: "steps.tag.outputs.value != ''"
+        with:
+          node-version: "18.x"
+
+      - name: download dependencies
+        run: npm ci
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          tag: ${{ steps.tag.outputs.value }}
