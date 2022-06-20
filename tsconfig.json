@@ -6,7 +6,7 @@
   },
   "typedocOptions": {
     "entryPoints": [
-      "src/module.ts",
+      "src/module.ts"
     ],
     "out": "docs",
     "readme": "./README.md"
@@ -25,8 +25,7 @@
   },
   "extends": "./node_modules/gts/tsconfig-google.json",
   "include": [
-    "bin/**/*.ts",
-    "src/**/*.ts",
+    "src/**/*.ts"
   ],
   "exclude": [
     ".git",

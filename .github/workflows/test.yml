@@ -22,16 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
 
-    - uses: actions/cache@v3
-      id: cache-node-modules
-      with:
-        path: '**/node_modules'
-        key: ${{ runner.os }}-${{ matrix.node }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.node }}-node-
-
     - name: download dependencies
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: npm ci
 
     - name: lint
