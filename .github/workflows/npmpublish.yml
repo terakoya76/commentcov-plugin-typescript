@@ -25,6 +25,7 @@ jobs:
           if_false: ${{ steps.bumpr.outputs.next_version }}
 
       - name: Create release
+        if: "steps.tag.outputs.value != ''"
         id: create_release
         uses: actions/create-release@v1.0.0
         with:
@@ -36,7 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v3
-        if: "steps.tag.outputs.value != ''"
         with:
           node-version: "18.x"
 
@@ -45,6 +45,7 @@ jobs:
 
       # access: public for organization puckage.
       - uses: JS-DevTools/npm-publish@v1
+        if: "steps.tag.outputs.value != ''"
         with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
