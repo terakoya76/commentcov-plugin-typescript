@@ -1,7 +1,7 @@
-import rootDir from 'app-root-path';
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import wrapServerWithReflection from 'grpc-node-server-reflection';
+import path from 'path';
 
 import {ServingStatus} from './module';
 import {HealthProtoGrpcType} from './module';
@@ -11,11 +11,17 @@ import {pluginImplementation} from './module';
 import {sleep} from './module';
 
 /**
+ * root path of the project.
+ * @type {string}
+ */
+const rootPath = path.resolve(__dirname, '..');
+
+/**
  * HealthCheck Service Definition.
  * @type {grpc.GrpcObject}
  */
 const healthProto = grpc.loadPackageDefinition(
-  protoLoader.loadSync(`${rootDir}/grpc.health.v1/health.proto`)
+  protoLoader.loadSync(rootPath + '/grpc.health.v1/health.proto')
 ) as unknown as HealthProtoGrpcType;
 
 initStatusMap({
@@ -27,7 +33,7 @@ initStatusMap({
  * @type {grpc.GrpcObject}
  */
 const commentcovPluginProto = grpc.loadPackageDefinition(
-  protoLoader.loadSync(`${rootDir}/commentcov-proto/commentcov_plugin.proto`)
+  protoLoader.loadSync(rootPath + '/commentcov-proto/commentcov_plugin.proto')
 ) as unknown as CommentcovPluginProtoGrpcType;
 
 /**
