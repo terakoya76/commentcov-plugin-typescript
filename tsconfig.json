@@ -15,11 +15,11 @@
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
+    "outDir": "./build",
+    "rootDir": "./src",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "outDir": "./build",
-    "rootDir": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
