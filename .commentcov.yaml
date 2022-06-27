@@ -1,11 +1,11 @@
 plugins:
   - extension: .ts
-    install_command: npm i --location=global @commentcov/commentcov-plugin-typescript
-    execute_command: npx commentcov-plugin-typescript
+    install_command: npm i @commentcov/commentcov-plugin-typescript
+    execute_command: ./node_modules/.bin/commentcov-plugin-typescript
 target_path: .
 exclude_paths:
   - ./build/**/**
   - ./docs/**/**
   - ./node_modules/**/**
   - ./src/generated/**/**
-mode: file_scope
+mode: scope
