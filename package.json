@@ -1,6 +1,6 @@
 {
   "name": "@commentcov/commentcov-plugin-typescript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=16.0.0"
   },
