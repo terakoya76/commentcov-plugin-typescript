@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
     "@types/google-protobuf": "^3.15.6",
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",
     "coveralls": "^3.1.1",
     "gts": "^3.1.0",
