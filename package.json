@@ -30,7 +30,7 @@
     "@grpc/grpc-js": "^1.6.10",
     "@grpc/proto-loader": "^0.7.0",
     "app-root-path": "^3.1.0",
-    "google-protobuf": "^3.4.0",
+    "google-protobuf": "^3.21.0",
     "grpc-node-server-reflection": "^1.0.2",
     "tsutils": "^3.21.0"
   },
