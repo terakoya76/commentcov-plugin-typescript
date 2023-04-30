@@ -11,10 +11,9 @@ jobs:
     strategy:
       matrix:
         node: [16.x, 18.x]
-        os: [ubuntu-20.04, ubuntu-22.04]
 
     name: all
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
@@ -39,4 +38,4 @@ jobs:
       with:
         github-token: ${{ secrets.github_token }}
         path-to-lcov: coverage/lcov.info
-      if: "matrix.os == 'ubuntu-22.04' && matrix.node == '18.x'"
+      if: "matrix.node == '18.x'"
