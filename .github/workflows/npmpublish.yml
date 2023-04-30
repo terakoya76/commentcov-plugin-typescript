@@ -46,7 +46,7 @@ jobs:
         run: npm ci
 
       # access: public for organization puckage.
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v2
         if: "steps.tag.outputs.value != ''"
         with:
           access: "public"
