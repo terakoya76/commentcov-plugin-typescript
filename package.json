@@ -14,7 +14,7 @@
   "main": "build/index.js",
   "devDependencies": {
     "@types/app-root-path": "^1.2.8",
-    "@types/google-protobuf": "^3.15.10",
+    "@types/google-protobuf": "^3.15.12",
     "@types/jest": "^28.1.8",
     "@types/node": "^20.9.2",
     "coveralls": "^3.1.1",
