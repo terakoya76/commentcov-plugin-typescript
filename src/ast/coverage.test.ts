@@ -66,8 +66,7 @@ class A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciClass = {
         extension: '.ts',
@@ -214,8 +213,7 @@ export class A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciClass = {
         extension: '.ts',
@@ -355,8 +353,7 @@ export class A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciClass = {
         extension: '.ts',
@@ -522,8 +519,7 @@ enum A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciEnum = {
         extension: '.ts',
@@ -596,8 +592,7 @@ export enum A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciEnum = {
         extension: '.ts',
@@ -666,8 +661,7 @@ export enum A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciEnum = {
         extension: '.ts',
@@ -761,8 +755,7 @@ function A(a: number, b: number): number {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -846,8 +839,7 @@ export function A(a: number, b: number): number {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -925,8 +917,7 @@ export function A(a: number, b: number): number {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1019,8 +1010,7 @@ interface A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1094,8 +1084,7 @@ export interface A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1164,8 +1153,7 @@ interface A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1257,8 +1245,7 @@ module A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1330,8 +1317,7 @@ export module A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1399,8 +1385,7 @@ module A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1490,8 +1475,7 @@ namespace A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1563,8 +1547,7 @@ export namespace A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1632,8 +1615,7 @@ module A {
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1720,8 +1702,7 @@ let A = 'hoge'; // Let A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1788,8 +1769,7 @@ export let A = 'hoge'; // Let A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1853,8 +1833,7 @@ let A = 'hoge'; // Let A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1921,8 +1900,7 @@ const A = 'hoge'; // Const A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -1989,8 +1967,7 @@ export const A = 'hoge'; // Const A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',
@@ -2054,8 +2031,7 @@ const A = 'hoge'; // Const A Inline
 
     const sourceFile = stringToProgram(fileName, str);
     if (sourceFile === undefined) {
-      // eslint-disable-next-line no-process-exit
-      process.exit();
+      throw new Error('sourceFile should be present');
     } else {
       const ciFunction = {
         extension: '.ts',

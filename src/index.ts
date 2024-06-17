@@ -3,12 +3,15 @@ import * as protoLoader from '@grpc/proto-loader';
 import wrapServerWithReflection from 'grpc-node-server-reflection';
 import path from 'path';
 
-import {ServingStatus} from './module';
-import {HealthProtoGrpcType} from './module';
-import {CommentcovPluginProtoGrpcType} from './module';
-import {initStatusMap, healthImplementation} from './module';
-import {pluginImplementation} from './module';
-import {sleep} from './module';
+import {
+  CommentcovPluginProtoGrpcType,
+  HealthProtoGrpcType,
+  ServingStatus,
+  initStatusMap,
+  healthImplementation,
+  pluginImplementation,
+  sleep,
+} from './module';
 
 /**
  * root path of the project.
@@ -63,8 +66,8 @@ s.bindAsync(
       // SIGINT Handler
       process.on('SIGINT', () => {
         console.log('Caught interrupt signal');
-        // eslint-disable-next-line no-process-exit
-        process.exit();
+        // eslint-disable-next-line n/no-process-exit
+        process.exit(1);
       });
 
       // Infinite loop until got SIGINT.
