@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import {fs} from 'memfs';
+import {createProjectSync} from '@ts-morph/bootstrap';
 import {
   fileToCoverageItems,
   getScopeKey,
@@ -19,23 +19,8 @@ function stringToProgram(
   filePath: string,
   content: string
 ): ts.SourceFile | undefined {
-  fs.writeFileSync(filePath, content);
-
-  const host = ts.createCompilerHost({
-    module: ts.ModuleKind.AMD,
-    target: ts.ScriptTarget.ES5,
-  });
-  host.readFile = (fileName: string): string => {
-    return fs.readFileSync(fileName, 'utf8').toString();
-  };
-
-  const program = ts.createProgram({
-    options: {},
-    rootNames: [filePath],
-    host: host,
-  });
-
-  return program.getSourceFile(filePath);
+  const project = createProjectSync();
+  return project.createSourceFile(filePath, content);
 }
 
 describe('fileToCoverageItems processClassCoverage', () => {
