@@ -24,7 +24,7 @@ const rootPath = path.resolve(__dirname, '..');
  * @type {grpc.GrpcObject}
  */
 const healthProto = grpc.loadPackageDefinition(
-  protoLoader.loadSync(rootPath + '/grpc.health.v1/health.proto')
+  protoLoader.loadSync(rootPath + '/grpc.health.v1/health.proto'),
 ) as unknown as HealthProtoGrpcType;
 
 initStatusMap({
@@ -36,7 +36,7 @@ initStatusMap({
  * @type {grpc.GrpcObject}
  */
 const commentcovPluginProto = grpc.loadPackageDefinition(
-  protoLoader.loadSync(rootPath + '/commentcov-proto/commentcov_plugin.proto')
+  protoLoader.loadSync(rootPath + '/commentcov-proto/commentcov_plugin.proto'),
 ) as unknown as CommentcovPluginProtoGrpcType;
 
 /**
@@ -47,7 +47,7 @@ const s = wrapServerWithReflection(new grpc.Server());
 s.addService(healthProto.grpc.health.v1.Health.service, healthImplementation);
 s.addService(
   commentcovPluginProto.commentcov.plugin.CommentcovPlugin.service,
-  pluginImplementation
+  pluginImplementation,
 );
 
 s.bindAsync(
@@ -75,5 +75,5 @@ s.bindAsync(
         sleep(1);
       }, 0);
     }
-  }
+  },
 );

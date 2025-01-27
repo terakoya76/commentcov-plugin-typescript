@@ -16,7 +16,7 @@ import {CoverageItem} from '../generated/commentcov/plugin/CoverageItem';
 export const pluginImplementation: CommentcovPluginHandlers = {
   MeasureCoverage(
     call: grpc.ServerUnaryCall<MeasureCoverageIn, MeasureCoverageOut>,
-    callback: grpc.sendUnaryData<MeasureCoverageOut>
+    callback: grpc.sendUnaryData<MeasureCoverageOut>,
   ): void {
     if (call.request && call.request.files) {
       let coverageItems: CoverageItem[] = [];
@@ -47,7 +47,7 @@ export const pluginImplementation: CommentcovPluginHandlers = {
           details: '',
           metadata: new grpc.Metadata(),
         },
-        undefined
+        undefined,
       );
     }
   },

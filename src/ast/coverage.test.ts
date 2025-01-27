@@ -17,7 +17,7 @@ import {_commentcov_plugin_CoverageItem_Scope as Scope} from '../generated/comme
  */
 function stringToProgram(
   filePath: string,
-  content: string
+  content: string,
 ): ts.SourceFile | undefined {
   const project = createProjectSync();
   return project.createSourceFile(filePath, content);

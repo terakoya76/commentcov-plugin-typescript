@@ -86,7 +86,7 @@ export function fileToCoverageItems(sourceFile: ts.SourceFile): CoverageItem[] {
  */
 export function processClassCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.ClassDeclaration
+  decl: ts.ClassDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -120,7 +120,7 @@ export function processClassCoverage(
  */
 export function processEnumCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.EnumDeclaration
+  decl: ts.EnumDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -154,7 +154,7 @@ export function processEnumCoverage(
  */
 export function processFunctionCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.FunctionDeclaration
+  decl: ts.FunctionDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -188,7 +188,7 @@ export function processFunctionCoverage(
  */
 export function processInterfaceCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.InterfaceDeclaration
+  decl: ts.InterfaceDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -222,7 +222,7 @@ export function processInterfaceCoverage(
  */
 export function processMethodCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.MethodDeclaration
+  decl: ts.MethodDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -261,7 +261,7 @@ export function processMethodCoverage(
  */
 export function processModuleCoverage(
   sourceFile: ts.SourceFile,
-  decl: ts.ModuleDeclaration
+  decl: ts.ModuleDeclaration,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -295,7 +295,7 @@ export function processModuleCoverage(
  */
 export function processVariableCoverage(
   sourceFile: ts.SourceFile,
-  statement: ts.VariableStatement
+  statement: ts.VariableStatement,
 ): CoverageItem {
   let scope = 0;
   if (
@@ -341,7 +341,7 @@ export function processVariableCoverage(
 export function modifyPublicity(
   sourceFile: ts.SourceFile,
   decl: ts.ExportDeclaration,
-  list: CoverageItem[]
+  list: CoverageItem[],
 ) {
   if (decl.exportClause === undefined) {
     return;
@@ -436,7 +436,7 @@ export function makeScopePublic(k: string): string {
  */
 export function findCoverageItemByIdentifier(
   identifier: string,
-  list: CoverageItem[]
+  list: CoverageItem[],
 ): CoverageItem | null {
   let ret: CoverageItem | null = null;
   list.forEach((ci: CoverageItem) => {
