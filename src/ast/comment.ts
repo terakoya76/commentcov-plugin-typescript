@@ -12,7 +12,7 @@ import {Comment} from '../generated/commentcov/plugin/Comment';
  */
 export function nodeToHeaderComments(
   sourceFile: ts.SourceFile,
-  node: ts.Node
+  node: ts.Node,
 ): Comment[] {
   let hcs: Comment[] = [];
   if (utils.canHaveJsDoc(node)) {
@@ -25,7 +25,7 @@ export function nodeToHeaderComments(
   // cf. https://typescript-jp.gitbook.io/deep-dive/overview/ast/ast-trivia
   const leadingCRs = ts.getLeadingCommentRanges(
     sourceFile.getFullText(),
-    node.getFullStart()
+    node.getFullStart(),
   );
 
   if (leadingCRs?.length) {
@@ -48,7 +48,7 @@ export function nodeToHeaderComments(
  */
 function nodeJsDocToHeaderComments(
   sourceFile: ts.SourceFile,
-  node: ts.Node
+  node: ts.Node,
 ): Comment[] {
   return utils.getJsDoc(node, sourceFile).map((doc: ts.JSDoc): Comment => {
     let text: string;
@@ -80,7 +80,7 @@ function nodeJsDocToHeaderComments(
  */
 export function nodeToInlineComments(
   sourceFile: ts.SourceFile,
-  node: ts.Node
+  node: ts.Node,
 ): Comment[] {
   const comments: Comment[] = [];
 
@@ -92,7 +92,7 @@ export function nodeToInlineComments(
         comment: normalizeText(utils.commentText(fullText, comment)),
       });
     },
-    sourceFile
+    sourceFile,
   );
 
   return comments;

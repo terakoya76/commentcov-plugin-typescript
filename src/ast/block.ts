@@ -28,7 +28,7 @@ export function NodeToBlock(sourceFile: ts.SourceFile, node: ts.Node): Block {
  */
 export function CommentRangeToBlock(
   sourceFile: ts.SourceFile,
-  comment: ts.CommentRange
+  comment: ts.CommentRange,
 ): Block {
   const sr = ts.getLineAndCharacterOfPosition(sourceFile, comment.pos);
   const er = ts.getLineAndCharacterOfPosition(sourceFile, comment.end);

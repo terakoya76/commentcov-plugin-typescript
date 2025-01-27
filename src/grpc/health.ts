@@ -80,7 +80,7 @@ const getError = (service: string): Error => {
 export const healthImplementation: HealthHandlers = {
   Check(
     call: grpc.ServerUnaryCall<HealthCheckRequest, HealthCheckResponse>,
-    callback: grpc.sendUnaryData<HealthCheckResponse>
+    callback: grpc.sendUnaryData<HealthCheckResponse>,
   ): void {
     if (call.request && call.request.service) {
       const service = call.request.service;
@@ -96,13 +96,13 @@ export const healthImplementation: HealthHandlers = {
           details: '',
           metadata: new grpc.Metadata(),
         },
-        undefined
+        undefined,
       );
     }
   },
 
   Watch(
-    call: grpc.ServerWritableStream<HealthCheckRequest, HealthCheckResponse>
+    call: grpc.ServerWritableStream<HealthCheckRequest, HealthCheckResponse>,
   ): void {
     if (call.request && call.request.service) {
       const service = call.request.service;
