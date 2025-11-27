@@ -1,5 +1,4 @@
 import * as ts from 'typescript';
-import {createProjectSync} from '@ts-morph/bootstrap';
 import {
   fileToCoverageItems,
   getScopeKey,
@@ -10,17 +9,19 @@ import {
 import {_commentcov_plugin_CoverageItem_Scope as Scope} from '../generated/commentcov/plugin/CoverageItem';
 
 /**
- * Returns ts.SourceFile compiled on memory-fs with the given filePath and content.
- * @param {string} filePath - The file is created with that path on memory-fs.
- * @param {string} content - The content of creating file.
- * @return {ts.SourceFile | undefined} - The result of compilation.
+ * Returns ts.SourceFile parsed from the given content string.
+ * @param {string} filePath - The virtual file path for the SourceFile.
+ * @param {string} content - The TypeScript source code content.
+ * @return {ts.SourceFile} - The parsed SourceFile.
  */
-function stringToProgram(
-  filePath: string,
-  content: string,
-): ts.SourceFile | undefined {
-  const project = createProjectSync();
-  return project.createSourceFile(filePath, content);
+function stringToProgram(filePath: string, content: string): ts.SourceFile {
+  return ts.createSourceFile(
+    filePath,
+    content,
+    ts.ScriptTarget.Latest,
+    true, // setParentNodes - required for AST traversal
+    ts.ScriptKind.TS,
+  );
 }
 
 describe('fileToCoverageItems processClassCoverage', () => {
