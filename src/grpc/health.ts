@@ -2,6 +2,7 @@ import * as grpc from '@grpc/grpc-js';
 
 import {
   HealthCheckResponse,
+  _grpc_health_v1_HealthCheckResponse_ServingStatus,
   _grpc_health_v1_HealthCheckResponse_ServingStatus as ServingStatus,
 } from '../generated/grpc/health/v1/HealthCheckResponse';
 import {HealthCheckRequest} from '../generated/grpc/health/v1/HealthCheckRequest';
@@ -9,10 +10,10 @@ import {HealthHandlers} from '../generated/grpc/health/v1/Health';
 
 /**
  * StartMap maps service and its grpc_server status.
- * @type {{[key: string]: number}}
+ * @type {{[key: string]: _grpc_health_v1_HealthCheckResponse_ServingStatus}}
  */
 type StatusMap = {
-  [key: string]: number;
+  [key: string]: _grpc_health_v1_HealthCheckResponse_ServingStatus;
 };
 
 /**
@@ -30,17 +31,22 @@ export const initStatusMap = (statusMap: StatusMap): void => {
 
 /**
  * Update statusMap.
- * @type {(string, number) => void}
+ * @type {(string, _grpc_health_v1_HealthCheckResponse_ServingStatus) => void}
  */
-const setStatus = (service: string, status: number): void => {
+const setStatus = (
+  service: string,
+  status: _grpc_health_v1_HealthCheckResponse_ServingStatus,
+): void => {
   _statusMap[service] = status;
 };
 
 /**
  * Extract status from statusMap.
- * @type {(string) => number}
+ * @type {(string) => _grpc_health_v1_HealthCheckResponse_ServingStatus}
  */
-const getStatus = (service: string): number => {
+const getStatus = (
+  service: string,
+): _grpc_health_v1_HealthCheckResponse_ServingStatus | undefined => {
   return _statusMap[service];
 };
 
@@ -107,7 +113,8 @@ export const healthImplementation: HealthHandlers = {
     if (call.request && call.request.service) {
       const service = call.request.service;
       const interval = setInterval(() => {
-        let newStatus = ServingStatus.SERVING;
+        let newStatus: _grpc_health_v1_HealthCheckResponse_ServingStatus =
+          ServingStatus.SERVING;
         if (getStatus(service) !== undefined) {
           newStatus = ServingStatus.SERVICE_UNKNOWN;
           setStatus(service, newStatus);
@@ -115,7 +122,7 @@ export const healthImplementation: HealthHandlers = {
         }
 
         if (getError(service) !== undefined) {
-          const prevStatus = getStatus(service) || -1;
+          const prevStatus = getStatus(service);
           if (prevStatus !== newStatus) {
             setStatus(service, newStatus);
             call.write({status: newStatus}, (error?: Error) => {

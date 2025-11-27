@@ -5,23 +5,51 @@ import type { Comment as _commentcov_plugin_Comment, Comment__Output as _comment
 
 // Original file: commentcov-proto/commentcov_plugin.proto
 
-export enum _commentcov_plugin_CoverageItem_Scope {
-  UNKNOWN = 0,
-  FILE = 1,
-  PUBLIC_MODULE = 2,
-  PRIVATE_MODULE = 3,
-  PUBLIC_CLASS = 4,
-  PRIVATE_CLASS = 5,
-  PUBLIC_TYPE = 6,
-  PRIVATE_TYPE = 7,
-  PUBLIC_FUNCTION = 8,
-  PRIVATE_FUNCTION = 9,
-  PUBLIC_VARIABLE = 10,
-  PRIVATE_VARIABLE = 11,
-}
+export const _commentcov_plugin_CoverageItem_Scope = {
+  UNKNOWN: 0,
+  FILE: 1,
+  PUBLIC_MODULE: 2,
+  PRIVATE_MODULE: 3,
+  PUBLIC_CLASS: 4,
+  PRIVATE_CLASS: 5,
+  PUBLIC_TYPE: 6,
+  PRIVATE_TYPE: 7,
+  PUBLIC_FUNCTION: 8,
+  PRIVATE_FUNCTION: 9,
+  PUBLIC_VARIABLE: 10,
+  PRIVATE_VARIABLE: 11,
+} as const;
+
+export type _commentcov_plugin_CoverageItem_Scope =
+  | 'UNKNOWN'
+  | 0
+  | 'FILE'
+  | 1
+  | 'PUBLIC_MODULE'
+  | 2
+  | 'PRIVATE_MODULE'
+  | 3
+  | 'PUBLIC_CLASS'
+  | 4
+  | 'PRIVATE_CLASS'
+  | 5
+  | 'PUBLIC_TYPE'
+  | 6
+  | 'PRIVATE_TYPE'
+  | 7
+  | 'PUBLIC_FUNCTION'
+  | 8
+  | 'PRIVATE_FUNCTION'
+  | 9
+  | 'PUBLIC_VARIABLE'
+  | 10
+  | 'PRIVATE_VARIABLE'
+  | 11
+
+export type _commentcov_plugin_CoverageItem_Scope__Output = typeof _commentcov_plugin_CoverageItem_Scope[keyof typeof _commentcov_plugin_CoverageItem_Scope]
 
 export interface CoverageItem {
-  'scope'?: (_commentcov_plugin_CoverageItem_Scope | keyof typeof _commentcov_plugin_CoverageItem_Scope);
+  'scope'?: (_commentcov_plugin_CoverageItem_Scope);
   'targetBlock'?: (_commentcov_plugin_Block | null);
   'file'?: (string);
   'identifier'?: (string);
@@ -31,7 +59,7 @@ export interface CoverageItem {
 }
 
 export interface CoverageItem__Output {
-  'scope': (_commentcov_plugin_CoverageItem_Scope);
+  'scope': (_commentcov_plugin_CoverageItem_Scope__Output);
   'targetBlock': (_commentcov_plugin_Block__Output | null);
   'file': (string);
   'identifier': (string);
