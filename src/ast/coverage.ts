@@ -6,6 +6,7 @@ import * as comment from './comment';
 import * as regex from '../regex/regex';
 import {
   CoverageItem,
+  _commentcov_plugin_CoverageItem_Scope,
   _commentcov_plugin_CoverageItem_Scope as Scope,
 } from '../generated/commentcov/plugin/CoverageItem';
 
@@ -88,15 +89,11 @@ export function processClassCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.ClassDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_CLASS;
-  } else {
-    scope = Scope.PRIVATE_CLASS;
-  }
+      ? Scope.PUBLIC_CLASS
+      : Scope.PRIVATE_CLASS;
 
   const hcs = comment.nodeToHeaderComments(sourceFile, decl);
   const ics = comment.nodeToInlineComments(sourceFile, decl);
@@ -122,15 +119,11 @@ export function processEnumCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.EnumDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_VARIABLE;
-  } else {
-    scope = Scope.PRIVATE_VARIABLE;
-  }
+      ? Scope.PUBLIC_VARIABLE
+      : Scope.PRIVATE_VARIABLE;
 
   const hcs = comment.nodeToHeaderComments(sourceFile, decl);
   const ics = comment.nodeToInlineComments(sourceFile, decl);
@@ -156,15 +149,11 @@ export function processFunctionCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.FunctionDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_FUNCTION;
-  } else {
-    scope = Scope.PRIVATE_FUNCTION;
-  }
+      ? Scope.PUBLIC_FUNCTION
+      : Scope.PRIVATE_FUNCTION;
 
   const hcs = comment.nodeToHeaderComments(sourceFile, decl);
   const ics = comment.nodeToInlineComments(sourceFile, decl);
@@ -190,15 +179,11 @@ export function processInterfaceCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.InterfaceDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_CLASS;
-  } else {
-    scope = Scope.PRIVATE_CLASS;
-  }
+      ? Scope.PUBLIC_CLASS
+      : Scope.PRIVATE_CLASS;
 
   const hcs = comment.nodeToHeaderComments(sourceFile, decl);
   const ics = comment.nodeToInlineComments(sourceFile, decl);
@@ -224,15 +209,11 @@ export function processMethodCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.MethodDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_FUNCTION;
-  } else {
-    scope = Scope.PRIVATE_FUNCTION;
-  }
+      ? Scope.PUBLIC_FUNCTION
+      : Scope.PRIVATE_FUNCTION;
 
   let identifier = '';
   if (ts.isIdentifier(decl.name)) {
@@ -263,15 +244,11 @@ export function processModuleCoverage(
   sourceFile: ts.SourceFile,
   decl: ts.ModuleDeclaration,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     decl.modifiers &&
     decl.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_MODULE;
-  } else {
-    scope = Scope.PRIVATE_MODULE;
-  }
+      ? Scope.PUBLIC_MODULE
+      : Scope.PRIVATE_MODULE;
 
   const hcs = comment.nodeToHeaderComments(sourceFile, decl);
   const ics = comment.nodeToInlineComments(sourceFile, decl);
@@ -297,15 +274,11 @@ export function processVariableCoverage(
   sourceFile: ts.SourceFile,
   statement: ts.VariableStatement,
 ): CoverageItem {
-  let scope = 0;
-  if (
+  const scope: _commentcov_plugin_CoverageItem_Scope =
     statement.modifiers &&
     statement.modifiers.some(m => m.kind === ts.SyntaxKind.ExportKeyword)
-  ) {
-    scope = Scope.PUBLIC_VARIABLE;
-  } else {
-    scope = Scope.PRIVATE_VARIABLE;
-  }
+      ? Scope.PUBLIC_VARIABLE
+      : Scope.PRIVATE_VARIABLE;
 
   const identifier = statement.declarationList.declarations
     .map((d: ts.VariableDeclaration) => {

@@ -2155,7 +2155,7 @@ describe('findCoverageItemByIdentifier', () => {
           comment: 'A Inline',
         },
       ],
-      scope: 5,
+      scope: Scope.PRIVATE_CLASS,
       targetBlock: {
         endColumn: 1,
         endLine: 8,
@@ -2190,7 +2190,7 @@ describe('findCoverageItemByIdentifier', () => {
           comment: 'B Inline',
         },
       ],
-      scope: 5,
+      scope: Scope.PRIVATE_CLASS,
       targetBlock: {
         endColumn: 1,
         endLine: 8,
