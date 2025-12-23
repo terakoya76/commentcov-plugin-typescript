@@ -66,7 +66,6 @@ s.bindAsync(
       // SIGINT Handler
       process.on('SIGINT', () => {
         console.log('Caught interrupt signal');
-        // eslint-disable-next-line n/no-process-exit
         process.exit(1);
       });
 
