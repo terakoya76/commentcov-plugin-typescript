@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   moduleFileExtensions: ['ts', 'js'],
   transform: {
